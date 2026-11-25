@@ -16,6 +16,8 @@
   python-ulid,
   pytz,
   tzdata,
+  uuid-utils,
+  pythonOlder,
   pytestCheckHook,
 }:
 
@@ -50,13 +52,15 @@ buildPythonPackage rec {
       pytz
       semver
       tzdata
-    ];
+    ]
+    ++ lib.optionals (pythonOlder "3.14") [ uuid-utils ];
     cron = [ cron-converter ];
     phonenumbers = [ phonenumbers ];
     pycountry = [ pycountry ];
     semver = [ semver ];
     python_ulid = [ python-ulid ];
     pendulum = [ pendulum ];
+    uuid_utils = lib.optionals (pythonOlder "3.14") [ uuid-utils ];
   };
 
   pytestFlags = [
