@@ -2,7 +2,6 @@
   lib,
   stdenv,
   fetchgit,
-  fetchpatch,
   cmake,
   pkg-config,
   libusb1,
@@ -23,12 +22,12 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "libftdi";
-  version = "1.6.rc1";
+  version = "1.6rc1";
 
   src = fetchgit {
     url = "git://developer.intra2net.com/libftdi";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-StXZE82teeMV7wmWh9pp9PA+5/tOSjBIzqVRSaxHt4k=";
+    hash = "sha256-ivZGnwu5yyrRI20HDOWEMPqD8VtHODt9CeIXLd69pbI=";
   };
 
   patches = [ ./swig-4.5-compat.patch ];
